@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 11
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ievent-service", "..\ievent-service\ievent-service\ievent-service.vcxproj", "{DDDD4071-F05D-A7CC-0D9A-2984F2D42029}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ievent-service-test", "..\ievent-service-test\ievent-service-test\ievent-service-test.vcxproj", "{17773076-D2B1-9C94-2114-93D580061B67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DDDD4071-F05D-A7CC-0D9A-2984F2D42029} = {DDDD4071-F05D-A7CC-0D9A-2984F2D42029}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17773076-D2B1-9C94-2114-93D580061B67}.Debug|Win32.ActiveCfg = Debug|Win32
+		{17773076-D2B1-9C94-2114-93D580061B67}.Debug|Win32.Build.0 = Debug|Win32
+		{17773076-D2B1-9C94-2114-93D580061B67}.Release|Win32.ActiveCfg = Release|Win32
+		{17773076-D2B1-9C94-2114-93D580061B67}.Release|Win32.Build.0 = Release|Win32
+		{DDDD4071-F05D-A7CC-0D9A-2984F2D42029}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DDDD4071-F05D-A7CC-0D9A-2984F2D42029}.Debug|Win32.Build.0 = Debug|Win32
+		{DDDD4071-F05D-A7CC-0D9A-2984F2D42029}.Release|Win32.ActiveCfg = Release|Win32
+		{DDDD4071-F05D-A7CC-0D9A-2984F2D42029}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
