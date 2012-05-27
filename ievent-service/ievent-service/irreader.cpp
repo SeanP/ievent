@@ -8,6 +8,7 @@
 #include "scoringimpulsehandler.hpp"
 #include "CameraHandler.h"
 #include "SessionInfoHandler.h"
+#include "CameraRequestHandler.h"
 
 
 IEvent::Service::iRacingReader::iRacingReader ():
@@ -15,8 +16,12 @@ IEvent::Service::iRacingReader::iRacingReader ():
 	_connected(false),
 	_timeout(60000),
 	_g_data(NULL),
-	_g_nData(0)
+	_g_nData(0),
+	_resp()
 {
+	RequestHandlerPtr camReq (new CameraRequestHandler() );
+	_resp.registerHandler("CameraSetCar", camReq);
+	_resp.run();
 }
 
 IEvent::Service::iRacingReader::~iRacingReader () {
@@ -91,15 +96,16 @@ void IEvent::Service::iRacingReader::run() {
 				/*std::cerr<< irsdk_getSessionInfoStr() << std::endl;*/
 				/*
 				if (pHeader->numVars > 0) {
-					for(int i=0; i<pHeader->numVars; i++) {
-						const irsdk_varHeader *rec = irsdk_getVarHeaderEntry(i);
+				for(int i=0; i<pHeader->numVars; i++) {
+				const irsdk_varHeader *rec = irsdk_getVarHeaderEntry(i);
 
-						std::cerr << "Name: " << rec->name << std::endl;
-					}
+				std::cerr << "Name: " << rec->name << std::endl;
+				}
 				} else {
-					std::cerr<< "No vars in header!" << std::endl;
+				std::cerr<< "No vars in header!" << std::endl;
 				}				
 				*/
+
 			}
 		} else if (_connected && irsdk_isConnected()) {
 			// Lost the session, shut everything down

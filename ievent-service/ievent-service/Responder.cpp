@@ -5,14 +5,15 @@
 
 using namespace IEvent::Service;
 
-Responder::Responder(int threads=1, int port=63733) :
+Responder::Responder(int threads, int port) :
 	_context(threads),
-	_socket(_context, ZMQ_PUB),
+	_socket(_context, ZMQ_REP),
 	_handlers()
 {
 	std::stringstream ss;
 	ss << "tcp://*:" << port;
 	_socket.bind(ss.str().c_str());
+	std::cerr << "Bound to " << ss.str() << std::endl;
 }
 
 Responder::~Responder(void)
@@ -27,9 +28,12 @@ bool Responder::registerHandler(std::string messageType, RequestHandlerPtr handl
 
 void Responder::run() {
 	while (true) {
+
+		std::cerr << "Ready for request" << std::endl;
 		zmq::message_t request;
 
 		_socket.recv (&request);
+		//std::cerr << "Received request: " << (char *) request.data() << std::endl;
 		std::stringstream ss;
 		ss << (char *) request.data();
 
@@ -47,9 +51,9 @@ void Responder::run() {
 
 		RequestHandlerPtr handler = _handlers[messageType];
 		if (handler != NULL) {
-			NodePtr node(&doc);
+
 			std::string response;
-			response = handler->handleRequest( messageType, node);
+			response = handler->handleRequest( messageType, doc);
 
 			zmq::message_t responseMsg( response.length() );
 			memcpy( (void *) responseMsg.data(), response.c_str(), response.length());

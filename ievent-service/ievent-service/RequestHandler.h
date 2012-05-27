@@ -17,7 +17,7 @@ namespace IEvent
 			RequestHandler(void);
 			virtual ~RequestHandler(void);
 
-			virtual std::string handleRequest(std::string messageType, NodePtr node) = 0;
+			virtual std::string handleRequest(std::string messageType, const YAML::Node& node) = 0;
 
 		}; 
 		typedef boost::shared_ptr<RequestHandler> RequestHandlerPtr;

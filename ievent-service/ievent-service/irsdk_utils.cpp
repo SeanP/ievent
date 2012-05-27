@@ -300,3 +300,20 @@ void irsdk_broadcastMsg(irsdk_BroadcastMsg msg, int var1, int var2)
 		SendNotifyMessage(HWND_BROADCAST, msgId, MAKELONG(msg, var1), var2);
 	}
 }
+
+int padCarNum(int num, int zero)
+{
+	int retVal = num;
+	int numPlace = 1;
+	if(num > 99)
+		numPlace = 3;
+	else if(num > 9)
+		numPlace = 2;
+	if(zero)
+	{
+		numPlace += zero;
+		retVal = num + 1000*numPlace;
+	}
+
+	return retVal;
+}

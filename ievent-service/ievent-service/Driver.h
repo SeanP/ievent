@@ -15,6 +15,7 @@ namespace IEvent
 			string driverName;
 			int userId;
 			string carNumber;
+			int encodedCarNumber;
 			string carPath;
 			int carClassID;
 			int carId;

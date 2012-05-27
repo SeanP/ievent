@@ -112,7 +112,7 @@
       <Filter>Comms\ReqResp\Handlers</Filter>
     </ClInclude>
     <ClInclude Include="SessionInfoHandler.h">
-      <Filter>Header Files</Filter>
+      <Filter>EventGenerators</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -158,11 +158,11 @@
     <ClCompile Include="RequestHandler.cpp">
       <Filter>Comms\ReqResp\Handlers</Filter>
     </ClCompile>
-    <ClCompile Include="SessionInfoHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DriverInfo.cpp">
       <Filter>Datatypes\WeekendInfo\DriverInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="SessionInfoHandler.cpp">
+      <Filter>EventGenerators</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -307,4 +307,6 @@ void irsdk_broadcastMsg(irsdk_BroadcastMsg msg, int var1, int var2, int var3);
 // var2 can be a full 32 bits
 void irsdk_broadcastMsg(irsdk_BroadcastMsg msg, int var1, int var2);
 
+int padCarNum(int num, int zero);
+
 #endif //IRSDK_DEFINES_H

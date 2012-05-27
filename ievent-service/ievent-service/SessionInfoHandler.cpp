@@ -79,5 +79,12 @@ DriverPtr SessionInfoHandler::generateNewDriver(const YAML::Node& dvr) {
 	dvr["CarClassID"] >> driver->carClassID;
 	dvr["CarID"] >> driver->carId;
 
+	int intCarNum = atoi( driver->carNumber.c_str() );
+	std::stringstream ss;
+	ss << intCarNum;
+	int lengthDiff = driver->carNumber.length() - ss.str().length();
+	intCarNum = padCarNum(intCarNum, lengthDiff);
+	driver->encodedCarNumber = intCarNum;
+
 	return driver;
 }

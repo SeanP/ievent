@@ -2,6 +2,7 @@
 #include <boost/shared_ptr.hpp>
 #include "irsdk_defines.h"
 #include "updatehandler.hpp"
+#include "Responder.h"
 
 namespace IEvent {
 	namespace Service {
@@ -28,6 +29,7 @@ namespace IEvent {
 			char * _g_data;
 			int _g_nData;
 			time_t _g_ttime;
+			Responder _resp;
 			std::vector<UpdatePtr> _handlers;
 		};
 

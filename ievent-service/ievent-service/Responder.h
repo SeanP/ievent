@@ -11,7 +11,7 @@ namespace IEvent
 		class Responder
 		{
 		public:
-			Responder(int threads, int port);
+			Responder(int threads=1, int port=63733);
 			~Responder(void);
 
 			void run();

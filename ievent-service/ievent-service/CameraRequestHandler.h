@@ -13,7 +13,7 @@ namespace IEvent
 			CameraRequestHandler(void);
 			~CameraRequestHandler(void);
 
-			std::string handleRequest(std::string messageType, NodePtr node);
+			std::string handleRequest(std::string messageType, const YAML::Node& node);
 		}; 
 	}
 
