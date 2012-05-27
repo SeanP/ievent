@@ -87,12 +87,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraHandler.h" />
+    <ClInclude Include="CameraRequestHandler.h" />
     <ClInclude Include="CameraState.h" />
+    <ClInclude Include="Driver.h" />
+    <ClInclude Include="DriverInfo.h" />
+    <ClInclude Include="SessionInfoHandler.h" />
     <ClInclude Include="dummyhandler.hpp" />
     <ClInclude Include="irreader.hpp" />
     <ClInclude Include="irsdk_defines.h" />
     <ClInclude Include="publisher.hpp" />
+    <ClInclude Include="RequestHandler.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Responder.h" />
     <ClInclude Include="scoringimpulse.hpp" />
     <ClInclude Include="scoringimpulsehandler.hpp" />
     <ClInclude Include="sectortracker.hpp" />
@@ -104,11 +110,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CameraHandler.cpp" />
+    <ClCompile Include="CameraRequestHandler.cpp" />
     <ClCompile Include="CameraState.cpp" />
+    <ClCompile Include="DriverInfo.cpp" />
+    <ClCompile Include="SessionInfoHandler.cpp" />
     <ClCompile Include="dummyhandler.cpp" />
     <ClCompile Include="irreader.cpp" />
     <ClCompile Include="irsdk_utils.cpp" />
     <ClCompile Include="publisher.cpp" />
+    <ClCompile Include="RequestHandler.cpp" />
+    <ClCompile Include="Responder.cpp" />
     <ClCompile Include="scoringimpulse.cpp" />
     <ClCompile Include="scoringimpulsehandler.cpp" />
     <ClCompile Include="sectortracker.cpp" />

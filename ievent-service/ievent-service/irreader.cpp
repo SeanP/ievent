@@ -7,6 +7,7 @@
 #include "dummyhandler.hpp"
 #include "scoringimpulsehandler.hpp"
 #include "CameraHandler.h"
+#include "SessionInfoHandler.h"
 
 
 IEvent::Service::iRacingReader::iRacingReader ():
@@ -42,6 +43,9 @@ bool IEvent::Service::iRacingReader::init() {
 
 	UpdatePtr camera ( new IEvent::Service::CameraHandler() );
 	_handlers.push_back(camera);
+
+	UpdatePtr sessionInfo ( new IEvent::Service::SessionInfoHandler() );
+	_handlers.push_back(sessionInfo);
 
 	// End handlers
 

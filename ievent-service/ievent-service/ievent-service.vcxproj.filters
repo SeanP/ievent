@@ -28,8 +28,23 @@
     <Filter Include="Datatypes\Camera">
       <UniqueIdentifier>{c732b71e-639a-4b6d-968f-ae662325ce59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="iRacing SDK">
+    <Filter Include="Comms\ReqResp">
+      <UniqueIdentifier>{96c9d149-5228-4295-b9aa-80bc158b3811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Comms\iRacing SDK">
       <UniqueIdentifier>{173559cf-0e56-4595-b325-fac5b27d82da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Datatypes\Scoring">
+      <UniqueIdentifier>{e598a17b-91ab-4187-8f3e-d2bbef453902}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Comms\ReqResp\Handlers">
+      <UniqueIdentifier>{19392973-8e7c-47d3-b519-2960c1e462a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Comms\PubSub">
+      <UniqueIdentifier>{0212d535-d354-4c13-bb5c-cdaa672bbf62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Datatypes\WeekendInfo\DriverInfo">
+      <UniqueIdentifier>{0775e759-b9ea-4e8a-97a5-ff1ec16ef79d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,25 +75,43 @@
     <ClInclude Include="trackorder.hpp">
       <Filter>EventGenerators</Filter>
     </ClInclude>
-    <ClInclude Include="publisher.hpp">
-      <Filter>Comms</Filter>
-    </ClInclude>
-    <ClInclude Include="scoringimpulse.hpp">
-      <Filter>Datatypes</Filter>
-    </ClInclude>
-    <ClInclude Include="sectortracker.hpp">
-      <Filter>Datatypes</Filter>
-    </ClInclude>
     <ClInclude Include="CameraState.h">
       <Filter>Datatypes\Camera</Filter>
     </ClInclude>
     <ClInclude Include="irsdk_defines.h">
-      <Filter>iRacing SDK</Filter>
+      <Filter>Comms\iRacing SDK</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="publisher.hpp">
+      <Filter>Comms\PubSub</Filter>
+    </ClInclude>
+    <ClInclude Include="Responder.h">
+      <Filter>Comms\ReqResp</Filter>
+    </ClInclude>
     <ClInclude Include="CameraHandler.h">
+      <Filter>EventGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="scoringimpulse.hpp">
+      <Filter>Datatypes\Scoring</Filter>
+    </ClInclude>
+    <ClInclude Include="sectortracker.hpp">
+      <Filter>Datatypes\Scoring</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraRequestHandler.h">
+      <Filter>Comms\ReqResp\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="DriverInfo.h">
+      <Filter>Datatypes\WeekendInfo\DriverInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="Driver.h">
+      <Filter>Datatypes\WeekendInfo\DriverInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="RequestHandler.h">
+      <Filter>Comms\ReqResp\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="SessionInfoHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -98,23 +131,38 @@
     <ClCompile Include="scoringimpulsehandler.cpp">
       <Filter>EventGenerators</Filter>
     </ClCompile>
-    <ClCompile Include="publisher.cpp">
-      <Filter>Comms</Filter>
-    </ClCompile>
-    <ClCompile Include="scoringimpulse.cpp">
-      <Filter>Datatypes</Filter>
-    </ClCompile>
-    <ClCompile Include="sectortracker.cpp">
-      <Filter>Datatypes</Filter>
-    </ClCompile>
     <ClCompile Include="CameraState.cpp">
       <Filter>Datatypes\Camera</Filter>
     </ClCompile>
     <ClCompile Include="irsdk_utils.cpp">
-      <Filter>iRacing SDK</Filter>
+      <Filter>Comms\iRacing SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="publisher.cpp">
+      <Filter>Comms\PubSub</Filter>
+    </ClCompile>
+    <ClCompile Include="Responder.cpp">
+      <Filter>Comms\ReqResp</Filter>
     </ClCompile>
     <ClCompile Include="CameraHandler.cpp">
+      <Filter>EventGenerators</Filter>
+    </ClCompile>
+    <ClCompile Include="scoringimpulse.cpp">
+      <Filter>Datatypes\Scoring</Filter>
+    </ClCompile>
+    <ClCompile Include="sectortracker.cpp">
+      <Filter>Datatypes\Scoring</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraRequestHandler.cpp">
+      <Filter>Comms\ReqResp\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="RequestHandler.cpp">
+      <Filter>Comms\ReqResp\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="SessionInfoHandler.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DriverInfo.cpp">
+      <Filter>Datatypes\WeekendInfo\DriverInfo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -34,60 +34,60 @@ bool CameraHandler::handleUpdate(const irsdk_header *pHeader, char *ir_data) {
 	
 	if ( (*focusedCar) != _camera.getFocusCarIdx() ) {
 		_camera.setFocusCarIdx(*focusedCar);
-		std::cerr << "New car idx is " << (*focusedCar) << std::endl;
+		//std::cerr << "New car idx is " << (*focusedCar) << std::endl;
 	}
 
 	if ( (*cameraGroup) != _camera.getCameraGroup() ) {
 		_camera.setCameraGroup(*cameraGroup);
-		std::cerr << "New camera group is " << (*cameraGroup) << std::endl;
+		//std::cerr << "New camera group is " << (*cameraGroup) << std::endl;
 	}
 
 	if ( (*cameraNumber) != _camera.getCameraNumber() ) {
 		_camera.setCameraNumber(*cameraNumber);
-		std::cerr << "New camera number is " << (*cameraNumber) << std::endl;
+		//std::cerr << "New camera number is " << (*cameraNumber) << std::endl;
 	}
 
 	if ( (*replaySpeed) != _camera.getPlaybackSpeed() ) {
 		_camera.setPlaybackSpeed(*replaySpeed);
-		std::cerr << "New playback speed is " << (*replaySpeed) << std::endl;
+		//std::cerr << "New playback speed is " << (*replaySpeed) << std::endl;
 	}
 
 	if ( (*isSlowMotion) != _camera.isSlowMotionEnabled() ) {
 		_camera.setSlowMotionEnabled(*isSlowMotion);
-		std::cerr << "Slow motion is now " << ((*isSlowMotion) ? "enabled" : "disabled") << std::endl;
+		//std::cerr << "Slow motion is now " << ((*isSlowMotion) ? "enabled" : "disabled") << std::endl;
 	}
 
 	if ( (*cameraState) != _camera.getCameraStateBitfield() ) {
 		int diff = (*cameraState) ^ _camera.getCameraStateBitfield();
 		_camera.setCameraStateBitfield(*cameraState);
 
-		if (diff & irsdk_IsSessionScreen) {
-			std::cerr << "The session screen is currently " << ( (*cameraState) & irsdk_IsSessionScreen ? "active" : "inactive") << std::endl;
-		}
-		if (diff & irsdk_IsScenicActive) {
-			std::cerr << "The scenic camera is currently " << ( (*cameraState) & irsdk_IsScenicActive ? "active" : "inactive") << std::endl;
-		}
-		if (diff & irsdk_CamToolActive) {
-			std::cerr << "The camera tool is currently " << ( (*cameraState) & irsdk_CamToolActive ? "active" : "inactive") << std::endl;
-		}
-		if (diff & irsdk_UIHidden) {
-			std::cerr << "The UI is currently " << ( (*cameraState) & irsdk_UIHidden ? "hidden" : "visible") << std::endl;
-		}
-		if (diff & irsdk_UseAutoShotSelection) {
-			std::cerr << "Auto shot selection is currently " << ( (*cameraState) & irsdk_UseAutoShotSelection ? "active" : "inactive") << std::endl;
-		}
-		if (diff & irsdk_UseTemporaryEdits) {
-			std::cerr << "Temporary edits are currently " << ( (*cameraState) & irsdk_UseTemporaryEdits ? "active" : "inactive") << std::endl;
-		}
-		if (diff & irsdk_UseKeyAcceleration) {
-			std::cerr << "Key acceleration is currently " << ( (*cameraState) & irsdk_UseKeyAcceleration ? "active" : "inactive") << std::endl;
-		}
-		if (diff & irsdk_UseKey10xAcceleration) {
-			std::cerr << "Fast key acceleration is currently " << ( (*cameraState) & irsdk_UseKey10xAcceleration ? "active" : "inactive") << std::endl;
-		}
-		if (diff & irsdk_UseMouseAimMode) {
-			std::cerr << "Mouse aim mode is currently " << ( (*cameraState) & irsdk_UseMouseAimMode ? "active" : "inactive") << std::endl;
-		}
+		//if (diff & irsdk_IsSessionScreen) {
+		//	std::cerr << "The session screen is currently " << ( (*cameraState) & irsdk_IsSessionScreen ? "active" : "inactive") << std::endl;
+		//}
+		//if (diff & irsdk_IsScenicActive) {
+		//	std::cerr << "The scenic camera is currently " << ( (*cameraState) & irsdk_IsScenicActive ? "active" : "inactive") << std::endl;
+		//}
+		//if (diff & irsdk_CamToolActive) {
+		//	std::cerr << "The camera tool is currently " << ( (*cameraState) & irsdk_CamToolActive ? "active" : "inactive") << std::endl;
+		//}
+		//if (diff & irsdk_UIHidden) {
+		//	std::cerr << "The UI is currently " << ( (*cameraState) & irsdk_UIHidden ? "hidden" : "visible") << std::endl;
+		//}
+		//if (diff & irsdk_UseAutoShotSelection) {
+		//	std::cerr << "Auto shot selection is currently " << ( (*cameraState) & irsdk_UseAutoShotSelection ? "active" : "inactive") << std::endl;
+		//}
+		//if (diff & irsdk_UseTemporaryEdits) {
+		//	std::cerr << "Temporary edits are currently " << ( (*cameraState) & irsdk_UseTemporaryEdits ? "active" : "inactive") << std::endl;
+		//}
+		//if (diff & irsdk_UseKeyAcceleration) {
+		//	std::cerr << "Key acceleration is currently " << ( (*cameraState) & irsdk_UseKeyAcceleration ? "active" : "inactive") << std::endl;
+		//}
+		//if (diff & irsdk_UseKey10xAcceleration) {
+		//	std::cerr << "Fast key acceleration is currently " << ( (*cameraState) & irsdk_UseKey10xAcceleration ? "active" : "inactive") << std::endl;
+		//}
+		//if (diff & irsdk_UseMouseAimMode) {
+		//	std::cerr << "Mouse aim mode is currently " << ( (*cameraState) & irsdk_UseMouseAimMode ? "active" : "inactive") << std::endl;
+		//}
 	}
 	
 	return true;	

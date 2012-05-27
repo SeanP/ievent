@@ -27,4 +27,5 @@ IEvent::Service::Publisher::Publisher(int threads = 1, int port=63732):
 }
 
 IEvent::Service::Publisher::~Publisher() {
+	_publisher.close();
 }
