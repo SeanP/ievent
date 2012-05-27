@@ -6,6 +6,7 @@
 
 #include "dummyhandler.hpp"
 #include "scoringimpulsehandler.hpp"
+#include "CameraHandler.h"
 
 
 IEvent::Service::iRacingReader::iRacingReader ():
@@ -38,6 +39,9 @@ bool IEvent::Service::iRacingReader::init() {
 
 	UpdatePtr scoringImpulse ( new IEvent::Service::ScoringImpulseHandler() );
 	_handlers.push_back(scoringImpulse);
+
+	UpdatePtr camera ( new IEvent::Service::CameraHandler() );
+	_handlers.push_back(camera);
 
 	// End handlers
 
@@ -80,7 +84,7 @@ void IEvent::Service::iRacingReader::run() {
 				BOOST_FOREACH(UpdatePtr handler, _handlers) {
 					handler->handleUpdate(pHeader, _g_data);
 				}
-				//std::cerr<< irsdk_getSessionInfoStr() << std::endl;
+				/*std::cerr<< irsdk_getSessionInfoStr() << std::endl;*/
 				/*
 				if (pHeader->numVars > 0) {
 					for(int i=0; i<pHeader->numVars; i++) {

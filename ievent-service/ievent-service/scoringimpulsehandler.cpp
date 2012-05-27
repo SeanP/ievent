@@ -45,8 +45,8 @@ bool IEvent::Service::ScoringImpulseHandler::handleUpdate(const irsdk_header *pH
 		*/
 	}
 	
-	BOOST_FOREACH(ScoringImpulsePtr sip, impulses) {
-		std::cerr << sip->toString() << std::endl;
-	}
+	//BOOST_FOREACH(ScoringImpulsePtr sip, impulses) {
+	//	std::cerr << sip->toString() << std::endl;
+	//}
 	return true;
 }

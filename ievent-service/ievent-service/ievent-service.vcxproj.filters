@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="EventGenerators">
+      <UniqueIdentifier>{65d424a4-048b-4ce5-beb7-4b86c0381d03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Comms">
+      <UniqueIdentifier>{5b434de1-61b9-4fd2-9e2f-06d8b108dd0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Datatypes">
+      <UniqueIdentifier>{298e467a-d60d-4642-bd01-426cbc8167c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Datatypes\WeekendInfo">
+      <UniqueIdentifier>{d1ed1089-e9f3-4762-9306-ae0bcff79fce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Datatypes\Camera">
+      <UniqueIdentifier>{c732b71e-639a-4b6d-968f-ae662325ce59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="iRacing SDK">
+      <UniqueIdentifier>{173559cf-0e56-4595-b325-fac5b27d82da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -24,31 +42,43 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="publisher.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="irreader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="updatehandler.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="irsdk_defines.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="trackorder.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="dummyhandler.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>EventGenerators</Filter>
     </ClInclude>
     <ClInclude Include="scoringimpulsehandler.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>EventGenerators</Filter>
     </ClInclude>
-    <ClInclude Include="sectortracker.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="dummyhandler.hpp">
+      <Filter>EventGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="weekendinfo.hpp">
+      <Filter>Datatypes\WeekendInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="trackorder.hpp">
+      <Filter>EventGenerators</Filter>
+    </ClInclude>
+    <ClInclude Include="publisher.hpp">
+      <Filter>Comms</Filter>
     </ClInclude>
     <ClInclude Include="scoringimpulse.hpp">
+      <Filter>Datatypes</Filter>
+    </ClInclude>
+    <ClInclude Include="sectortracker.hpp">
+      <Filter>Datatypes</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraState.h">
+      <Filter>Datatypes\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="irsdk_defines.h">
+      <Filter>iRacing SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,26 +86,40 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="publisher.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="irreader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="irsdk_utils.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="weekendinfo.cpp">
+      <Filter>Datatypes\WeekendInfo</Filter>
     </ClCompile>
     <ClCompile Include="dummyhandler.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>EventGenerators</Filter>
     </ClCompile>
     <ClCompile Include="scoringimpulsehandler.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>EventGenerators</Filter>
     </ClCompile>
-    <ClCompile Include="sectortracker.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="publisher.cpp">
+      <Filter>Comms</Filter>
     </ClCompile>
     <ClCompile Include="scoringimpulse.cpp">
+      <Filter>Datatypes</Filter>
+    </ClCompile>
+    <ClCompile Include="sectortracker.cpp">
+      <Filter>Datatypes</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraState.cpp">
+      <Filter>Datatypes\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="irsdk_utils.cpp">
+      <Filter>iRacing SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ievent-service.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -1,6 +1,8 @@
 #ifndef IRSDK_DEFINES_H
 #define IRSDK_DEFINES_H
 
+#include <time.h>
+
 // Copyright (c) 2011 iRacing.com Motorsport Simulations, LLC.
 // All rights reserved.
 
