@@ -23,7 +23,7 @@ IEvent::Service::iRacingReader::iRacingReader ():
 	_pub()
 {
 	RequestHandlerPtr camera ( new CameraRequestHandler() );
-	_resp.registerHandler("CameraSetFocus", camera);
+	_resp.registerHandler("CameraSetCar", camera);
 
 	RequestHandlerPtr drivers ( new DriverInfoRequestHandler() );
 	_resp.registerHandler("GetAllDrivers", drivers);
