@@ -23,8 +23,9 @@ namespace IEvent
 		}; 
 
 		typedef boost::shared_ptr<Driver> DriverPtr;
+		typedef boost::shared_ptr<YAML::Emitter> EmitterPtr;
 
-		void driverToYaml(DriverPtr driver, boost::shared_ptr<YAML::Emitter> em);
+		void driverToYaml(DriverPtr driver,  EmitterPtr em);
 	}
 
 }

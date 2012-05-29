@@ -91,6 +91,7 @@
     <ClInclude Include="CameraState.h" />
     <ClInclude Include="Driver.h" />
     <ClInclude Include="DriverInfo.h" />
+    <ClInclude Include="DriverInfoRequestHandler.h" />
     <ClInclude Include="SessionInfoHandler.h" />
     <ClInclude Include="dummyhandler.hpp" />
     <ClInclude Include="irreader.hpp" />
@@ -114,6 +115,7 @@
     <ClCompile Include="CameraState.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="DriverInfo.cpp" />
+    <ClCompile Include="DriverInfoRequestHandler.cpp" />
     <ClCompile Include="SessionInfoHandler.cpp" />
     <ClCompile Include="dummyhandler.cpp" />
     <ClCompile Include="irreader.cpp" />

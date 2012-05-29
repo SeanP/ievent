@@ -10,6 +10,7 @@
 #include "CameraHandler.h"
 #include "SessionInfoHandler.h"
 #include "CameraRequestHandler.h"
+#include "DriverInfoRequestHandler.h"
 
 
 IEvent::Service::iRacingReader::iRacingReader ():
@@ -21,6 +22,13 @@ IEvent::Service::iRacingReader::iRacingReader ():
 	_resp(),
 	_pub()
 {
+	RequestHandlerPtr camera ( new CameraRequestHandler() );
+	_resp.registerHandler("CameraSetFocus", camera);
+
+	RequestHandlerPtr drivers ( new DriverInfoRequestHandler() );
+	_resp.registerHandler("GetAllDrivers", drivers);
+
+	_resp.start();
 }
 
 IEvent::Service::iRacingReader::~iRacingReader () {

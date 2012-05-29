@@ -114,6 +114,9 @@
     <ClInclude Include="SessionInfoHandler.h">
       <Filter>EventGenerators</Filter>
     </ClInclude>
+    <ClInclude Include="DriverInfoRequestHandler.h">
+      <Filter>Comms\ReqResp\Handlers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -166,6 +169,9 @@
     </ClCompile>
     <ClCompile Include="Driver.cpp">
       <Filter>Datatypes\WeekendInfo\DriverInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="DriverInfoRequestHandler.cpp">
+      <Filter>Comms\ReqResp\Handlers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
