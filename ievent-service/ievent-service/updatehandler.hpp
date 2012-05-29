@@ -1,6 +1,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include "irsdk_defines.h"
+#include "publisher.hpp"
 
 #pragma once
 

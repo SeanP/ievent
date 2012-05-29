@@ -26,14 +26,15 @@ bool Responder::registerHandler(std::string messageType, RequestHandlerPtr handl
 	return true;
 }
 
+void Responder::start() {
+	thread = boost::thread(&Responder::run, this);
+}
+
 void Responder::run() {
 	while (true) {
-
-		std::cerr << "Ready for request" << std::endl;
 		zmq::message_t request;
 
 		_socket.recv (&request);
-		//std::cerr << "Received request: " << (char *) request.data() << std::endl;
 		std::stringstream ss;
 		ss << (char *) request.data();
 
@@ -49,8 +50,9 @@ void Responder::run() {
 		std::string messageType;
 		doc["MessageType"] >> messageType;
 
-		RequestHandlerPtr handler = _handlers[messageType];
-		if (handler != NULL) {
+
+		if (_handlers.count(messageType) > 0) {
+			RequestHandlerPtr handler = _handlers[messageType];
 
 			std::string response;
 			response = handler->handleRequest( messageType, doc);

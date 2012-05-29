@@ -3,6 +3,7 @@
 #include "irsdk_defines.h"
 #include "updatehandler.hpp"
 #include "Responder.h"
+#include "publisher.hpp"
 
 namespace IEvent {
 	namespace Service {
@@ -30,6 +31,7 @@ namespace IEvent {
 			int _g_nData;
 			time_t _g_ttime;
 			Responder _resp;
+			PublisherPtr _pub;
 			std::vector<UpdatePtr> _handlers;
 		};
 

@@ -2,6 +2,7 @@
 
 #include "irsdk_defines.h"
 #include "sectortracker.hpp"
+#include "publisher.hpp"
 
 #pragma once
 
@@ -9,7 +10,7 @@ namespace IEvent {
 	namespace Service {
 		class ScoringImpulseHandler : public UpdateHandler {
 		public:
-			ScoringImpulseHandler();
+			ScoringImpulseHandler(PublisherPtr publisher);
 			bool handleUpdate(const irsdk_header *pHeader, char *ir_data);
 
 		private:
@@ -19,6 +20,8 @@ namespace IEvent {
 			//float _previousPct[_maxCars];
 			std::vector<SectorTrackerPtr> _cars;
 			int _lastHeaderVersion;
+
+			PublisherPtr _publisher;
 			
 		};
 	}

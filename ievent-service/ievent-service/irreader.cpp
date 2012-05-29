@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
 #include "boost/foreach.hpp"
+#include "boost/thread.hpp"
 #include "irreader.hpp"
 #include "irsdk_defines.h"
 
@@ -17,11 +18,9 @@ IEvent::Service::iRacingReader::iRacingReader ():
 	_timeout(60000),
 	_g_data(NULL),
 	_g_nData(0),
-	_resp()
+	_resp(),
+	_pub()
 {
-	RequestHandlerPtr camReq (new CameraRequestHandler() );
-	_resp.registerHandler("CameraSetCar", camReq);
-	_resp.run();
 }
 
 IEvent::Service::iRacingReader::~iRacingReader () {
@@ -32,25 +31,24 @@ void IEvent::Service::iRacingReader::setIsRunning(bool isRunning) {
 }
 
 bool IEvent::Service::iRacingReader::init() {
+	// Initialize network comms
+	_pub = PublisherPtr( new Publisher() );
+
 	// Set header size
 	_g_nData = pHeader->bufLen;
 	_g_data = new char[_g_nData];
 	// Add handlers
 	_handlers.clear();
 
-	/*
-	UpdatePtr dummy ( new IEvent::Service::DummyHandler() );
-	_handlers.push_back(dummy);
-	*/
+	// Must be first -- populates SessionInfo namespaces other handlers read
+	UpdatePtr sessionInfo ( new IEvent::Service::SessionInfoHandler(_pub) );
+	_handlers.push_back(sessionInfo);
 
-	UpdatePtr scoringImpulse ( new IEvent::Service::ScoringImpulseHandler() );
+	UpdatePtr scoringImpulse ( new IEvent::Service::ScoringImpulseHandler(_pub) );
 	_handlers.push_back(scoringImpulse);
 
-	UpdatePtr camera ( new IEvent::Service::CameraHandler() );
+	UpdatePtr camera ( new IEvent::Service::CameraHandler(_pub) );
 	_handlers.push_back(camera);
-
-	UpdatePtr sessionInfo ( new IEvent::Service::SessionInfoHandler() );
-	_handlers.push_back(sessionInfo);
 
 	// End handlers
 
@@ -64,6 +62,8 @@ bool IEvent::Service::iRacingReader::shutdown() {
 	_handlers.clear();
 	_connected = false;
 	_running = false; // For testing only!
+
+	_pub = PublisherPtr();
 
 	_timeout = 1000;
 

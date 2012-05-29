@@ -6,11 +6,12 @@
 #include "boost/foreach.hpp"
 #include "yaml-cpp/yaml.h"
 
-IEvent::Service::ScoringImpulseHandler::ScoringImpulseHandler() :
+IEvent::Service::ScoringImpulseHandler::ScoringImpulseHandler(PublisherPtr publisher) :
 	_ir_carIdxLapPct(irsdk_getVarHeaderEntry(irsdk_varNameToIndex("CarIdxLapDistPct"))),
 	_ir_carIdxTrackSurface(irsdk_getVarHeaderEntry(irsdk_varNameToIndex("CarIdxTrackSurface"))),
 	_lastHeaderVersion(-1),
-	_cars()
+	_cars(),
+	_publisher(publisher)
 {
 	std::vector<float> sectors;
 	sectors.push_back(0.0f);

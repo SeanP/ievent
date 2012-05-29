@@ -17,7 +17,14 @@ bool IEvent::Service::Publisher::publish(std::string subject, std::string messag
 	return true;
 }
 
-IEvent::Service::Publisher::Publisher(int threads = 1, int port=63732):
+bool IEvent::Service::Publisher::publish(std::string message) {
+	zmq::message_t zmsg(message.length());
+	memcpy(zmsg.data(), message.c_str(), message.length());
+
+	return _publisher.send(zmsg);
+}
+
+IEvent::Service::Publisher::Publisher(int threads, int port):
 	_context(threads),
 	_publisher(_context, ZMQ_PUB)
 {

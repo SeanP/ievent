@@ -8,8 +8,9 @@
 
 using namespace IEvent::Service;
 
-SessionInfoHandler::SessionInfoHandler(void) :
-	_lastSessionInfoStringVersion(-1)
+SessionInfoHandler::SessionInfoHandler(PublisherPtr publisher) :
+	_lastSessionInfoStringVersion(-1),
+	_publisher(publisher)
 {
 }
 
