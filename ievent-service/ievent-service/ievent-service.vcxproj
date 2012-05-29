@@ -112,6 +112,7 @@
     <ClCompile Include="CameraHandler.cpp" />
     <ClCompile Include="CameraRequestHandler.cpp" />
     <ClCompile Include="CameraState.cpp" />
+    <ClCompile Include="Driver.cpp" />
     <ClCompile Include="DriverInfo.cpp" />
     <ClCompile Include="SessionInfoHandler.cpp" />
     <ClCompile Include="dummyhandler.cpp" />

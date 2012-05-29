@@ -20,9 +20,9 @@ bool SessionInfoHandler::handleUpdate(const irsdk_header *pHeader, char *ir_data
 	if (_lastSessionInfoStringVersion < pHeader->sessionInfoUpdate) {
 		_lastSessionInfoStringVersion = pHeader->sessionInfoUpdate;
 
-		YAML::Emitter em;
+		boost::shared_ptr<YAML::Emitter> em (new YAML::Emitter);
 
-		em << YAML::BeginMap << YAML::Key << "SessionInfoUpdate" << YAML::Value << YAML::BeginMap;
+		(*em) << YAML::BeginMap << YAML::Key << "SessionInfoUpdate" << YAML::Value << YAML::BeginMap;
 
 		std::stringstream ss;
 		ss << irsdk_getSessionInfoStr();
@@ -41,7 +41,7 @@ bool SessionInfoHandler::handleUpdate(const irsdk_header *pHeader, char *ir_data
 				itr.second() >> v;
 				if (v != DriverInfo::fuelKilosPerLiter) {
 					DriverInfo::fuelKilosPerLiter = v;
-					em << YAML::Key << "FuelKilosPerLiter" << YAML::Value << v;
+					(*em) << YAML::Key << "FuelKilosPerLiter" << YAML::Value << v;
 				}
 			} else if (k == "DriverCarIdx") {
 				int v;
@@ -52,7 +52,7 @@ bool SessionInfoHandler::handleUpdate(const irsdk_header *pHeader, char *ir_data
 				itr.second() >> v;
 				if (v != DriverInfo::carRedline) {
 					DriverInfo::carRedline = v;
-					em << YAML::Key << "RPMRedline" << YAML::Value << v;
+					(*em) << YAML::Key << "RPMRedline" << YAML::Value << v;
 				}
 			} else if (k == "Drivers") {
 				const YAML::Node& drivers = itr.second();
@@ -72,24 +72,18 @@ bool SessionInfoHandler::handleUpdate(const irsdk_header *pHeader, char *ir_data
 				}
 
 				if (changedDrivers.size() > 0) {
-					em << YAML::Key << "Drivers" << YAML::Value << YAML::BeginSeq;
+					(*em) << YAML::Key << "Drivers" << YAML::Value << YAML::BeginSeq;
 					BOOST_FOREACH( DriverPtr ptr, changedDrivers) {
-						em << YAML::BeginMap;
-						em << YAML::Key << "DriverName" << YAML::Value << ptr->driverName;
-						em << YAML::Key << "CarNumber" << YAML::Value << ptr->carNumber;
-						em << YAML::Key << "CarPath" << YAML::Value << ptr->carPath;
-						em << YAML::Key << "CarClassID" << YAML::Value << ptr->carClassID;
-						em << YAML::Key << "CarID" << YAML::Value << ptr->carId;
-						em << YAML::EndMap;
+						IEvent::Service::driverToYaml(ptr, em);
 					}
-					em << YAML::EndSeq;
+					(*em) << YAML::EndSeq;
 				}
 			}
 		}
 
-		if (em.size() > 23 ) { // Magic value
-			std::cerr << em.c_str() << std::endl;
-			_publisher->publish(em.c_str());
+		if ((*em).size() > 23 ) { // Magic value
+			std::cerr << (*em).c_str() << std::endl;
+			_publisher->publish((*em).c_str());
 		}
 	}
 	return true;

@@ -164,6 +164,9 @@
     <ClCompile Include="SessionInfoHandler.cpp">
       <Filter>EventGenerators</Filter>
     </ClCompile>
+    <ClCompile Include="Driver.cpp">
+      <Filter>Datatypes\WeekendInfo\DriverInfo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ievent-service.rc">

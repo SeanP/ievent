@@ -2,6 +2,7 @@
 
 #include <string>
 #include "boost/shared_ptr.hpp"
+#include "yaml-cpp/yaml.h"
 
 using namespace std;
 
@@ -22,6 +23,8 @@ namespace IEvent
 		}; 
 
 		typedef boost::shared_ptr<Driver> DriverPtr;
+
+		void driverToYaml(DriverPtr driver, boost::shared_ptr<YAML::Emitter> em);
 	}
 
 }
