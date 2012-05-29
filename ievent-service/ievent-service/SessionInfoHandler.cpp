@@ -2,6 +2,7 @@
 
 #include <sstream>
 #include "yaml-cpp/yaml.h"
+#include "boost/foreach.hpp"
 
 #include "DriverInfo.h"
 #include "Driver.h"
@@ -19,6 +20,10 @@ bool SessionInfoHandler::handleUpdate(const irsdk_header *pHeader, char *ir_data
 	if (_lastSessionInfoStringVersion < pHeader->sessionInfoUpdate) {
 		_lastSessionInfoStringVersion = pHeader->sessionInfoUpdate;
 
+		YAML::Emitter em;
+
+		em << YAML::BeginMap << YAML::Key << "SessionInfoUpdate" << YAML::Value << YAML::BeginMap;
+
 		std::stringstream ss;
 		ss << irsdk_getSessionInfoStr();
 		YAML::Parser parser(ss);
@@ -35,8 +40,8 @@ bool SessionInfoHandler::handleUpdate(const irsdk_header *pHeader, char *ir_data
 				float v;
 				itr.second() >> v;
 				if (v != DriverInfo::fuelKilosPerLiter) {
-					//TODO Notify of change
 					DriverInfo::fuelKilosPerLiter = v;
+					em << YAML::Key << "FuelKilosPerLiter" << YAML::Value << v;
 				}
 			} else if (k == "DriverCarIdx") {
 				int v;
@@ -46,11 +51,13 @@ bool SessionInfoHandler::handleUpdate(const irsdk_header *pHeader, char *ir_data
 				float v;
 				itr.second() >> v;
 				if (v != DriverInfo::carRedline) {
-					//TODO Notify of change
 					DriverInfo::carRedline = v;
+					em << YAML::Key << "RPMRedline" << YAML::Value << v;
 				}
 			} else if (k == "Drivers") {
 				const YAML::Node& drivers = itr.second();
+				std::vector<DriverPtr> changedDrivers;
+
 				for (YAML::Iterator ditr = drivers.begin(); ditr != drivers.end(); ++ditr) {
 					const YAML::Node& dvr = *ditr;
 
@@ -59,13 +66,31 @@ bool SessionInfoHandler::handleUpdate(const irsdk_header *pHeader, char *ir_data
 					if (DriverInfo::driversByIndex.find(carIdx) == DriverInfo::driversByIndex.end()) {
 						// TODO Notify of change.
 						DriverPtr driver = generateNewDriver(dvr);
+						changedDrivers.push_back(driver);
 						DriverInfo::addDriver(driver);
 					}
+				}
+
+				if (changedDrivers.size() > 0) {
+					em << YAML::Key << "Drivers" << YAML::Value << YAML::BeginSeq;
+					BOOST_FOREACH( DriverPtr ptr, changedDrivers) {
+						em << YAML::BeginMap;
+						em << YAML::Key << "DriverName" << YAML::Value << ptr->driverName;
+						em << YAML::Key << "CarNumber" << YAML::Value << ptr->carNumber;
+						em << YAML::Key << "CarPath" << YAML::Value << ptr->carPath;
+						em << YAML::Key << "CarClassID" << YAML::Value << ptr->carClassID;
+						em << YAML::Key << "CarID" << YAML::Value << ptr->carId;
+						em << YAML::EndMap;
+					}
+					em << YAML::EndSeq;
 				}
 			}
 		}
 
-		// TODO Deal with the changes.
+		if (em.size() > 23 ) { // Magic value
+			std::cerr << em.c_str() << std::endl;
+			_publisher->publish(em.c_str());
+		}
 	}
 	return true;
 }
