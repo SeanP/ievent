@@ -21,13 +21,29 @@ std::string CameraRequestHandler::handleRequest(std::string messageType, const Y
 	if (messageType == "CameraSetCar") {
 		std::string carNumber;
 		yaml["CarNumber"] >> carNumber;
-		
+
 		if (DriverInfo::driversByCarNumber.count(carNumber) > 0) {
-			
+
 			std::cerr << "Attempting to change camera to " << carNumber << ", encoded number " << DriverInfo::driversByCarNumber[carNumber]->encodedCarNumber << std::endl;
 			irsdk_broadcastMsg(irsdk_BroadcastCamSwitchNum, DriverInfo::driversByCarNumber[carNumber]->encodedCarNumber, 0, 0);
 			std::cerr << "Attempted to change." << std::endl;
 		}
+	} else if (messageType == "CameraSetSpeed") {
+		int speed = 1;
+		bool slowMo = false;
+		
+		try {
+			yaml["CameraSpeed"] >> speed;
+			
+		} catch (...) {}
+
+		try {
+			yaml["IsSlowMotion"] >> slowMo;
+		} catch (...) {}
+
+		std::cerr << "Attempting to change camera speed to " << speed << "x, slow mo " << (slowMo ? "enabled" : "disabled") << std::endl;
+		irsdk_broadcastMsg(irsdk_BroadcastReplaySetPlaySpeed, speed, slowMo, 0);
+		std::cerr << "Set camera speed." << std::endl;
 	}
 
 	YAML::Emitter em;

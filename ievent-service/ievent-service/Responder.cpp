@@ -42,26 +42,27 @@ void Responder::run() {
 		YAML::Node doc;
 
 		/*
-		 * BIG FAIL WARNING!
-		 * We assume there is one YAML document per ZMQ message.  If there's
-		 * more than one, we'll ignore all but the first.
-		 */
+		* BIG FAIL WARNING!
+		* We assume there is one YAML document per ZMQ message.  If there's
+		* more than one, we'll ignore all but the first.
+		*/
 		parser.GetNextDocument(doc);
 		std::string messageType;
 		doc["MessageType"] >> messageType;
 
-
+		std::string response;
 		if (_handlers.count(messageType) > 0) {
 			RequestHandlerPtr handler = _handlers[messageType];
-
-			std::string response;
 			response = handler->handleRequest( messageType, doc);
-
-			zmq::message_t responseMsg( response.length() );
-			memcpy( (void *) responseMsg.data(), response.c_str(), response.length());
-
-			_socket.send(responseMsg);
+		} else {
+			YAML::Emitter em;
+			em << YAML::BeginMap << YAML::Key << "Response" << YAML::Value << "ERROR";
+			em << YAML::Key << "Why" << YAML::Value << "Unknown operation" << YAML::EndMap;
+			response = std::string (em.c_str());
 		}
+		zmq::message_t responseMsg( response.length() );
+		memcpy( (void *) responseMsg.data(), response.c_str(), response.length());
 
+		_socket.send(responseMsg);
 	}
 }

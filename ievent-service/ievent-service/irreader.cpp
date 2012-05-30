@@ -24,6 +24,7 @@ IEvent::Service::iRacingReader::iRacingReader ():
 {
 	RequestHandlerPtr camera ( new CameraRequestHandler() );
 	_resp.registerHandler("CameraSetCar", camera);
+	_resp.registerHandler("CameraSetSpeed", camera);
 
 	RequestHandlerPtr drivers ( new DriverInfoRequestHandler() );
 	_resp.registerHandler("GetAllDrivers", drivers);
