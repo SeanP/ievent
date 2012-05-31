@@ -32,18 +32,14 @@ std::string CameraRequestHandler::handleRequest(std::string messageType, const Y
 		int speed = 1;
 		bool slowMo = false;
 		
-		try {
-			yaml["CameraSpeed"] >> speed;
-			
+		try { // If CameraSpeed doesn't exist, assume normal speed.
+			yaml["CameraSpeed"] >> speed;			
 		} catch (...) {}
 
-		try {
+		try { // If IsSlowMotion doesn't exist, assume false;
 			yaml["IsSlowMotion"] >> slowMo;
 		} catch (...) {}
-
-		std::cerr << "Attempting to change camera speed to " << speed << "x, slow mo " << (slowMo ? "enabled" : "disabled") << std::endl;
 		irsdk_broadcastMsg(irsdk_BroadcastReplaySetPlaySpeed, speed, slowMo, 0);
-		std::cerr << "Set camera speed." << std::endl;
 	}
 
 	YAML::Emitter em;

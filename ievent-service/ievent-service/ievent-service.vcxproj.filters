@@ -46,6 +46,9 @@
     <Filter Include="Datatypes\WeekendInfo\DriverInfo">
       <UniqueIdentifier>{0775e759-b9ea-4e8a-97a5-ff1ec16ef79d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Datatypes\WeekendInfo\SessionInfo">
+      <UniqueIdentifier>{bec7b496-7d35-4e1b-b979-25a5ab3cd4c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -117,6 +120,15 @@
     <ClInclude Include="DriverInfoRequestHandler.h">
       <Filter>Comms\ReqResp\Handlers</Filter>
     </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>Datatypes\WeekendInfo\SessionInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="SessionInfo.h">
+      <Filter>Datatypes\WeekendInfo\SessionInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultsEntry.h">
+      <Filter>Datatypes\WeekendInfo\SessionInfo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -172,6 +184,15 @@
     </ClCompile>
     <ClCompile Include="DriverInfoRequestHandler.cpp">
       <Filter>Comms\ReqResp\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="SessionInfo.cpp">
+      <Filter>Datatypes\WeekendInfo\SessionInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>Datatypes\WeekendInfo\SessionInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultsEntry.cpp">
+      <Filter>Datatypes\WeekendInfo\SessionInfo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

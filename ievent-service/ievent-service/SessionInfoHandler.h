@@ -21,6 +21,11 @@ namespace IEvent
 
 			int _lastSessionInfoStringVersion;
 			PublisherPtr _publisher;
+
+			const irsdk_varHeader* _ir_currentSession;
+
+			void handleSessionInfo(const YAML::Node& yamlSessionInfo, char* ir_data);
+			void handleDriverInfo(const YAML::Node& yamlDriverInfo);
 		};
 
 
