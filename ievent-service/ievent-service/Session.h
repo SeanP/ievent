@@ -30,6 +30,8 @@ namespace IEvent
 		};
 
 		typedef boost::shared_ptr<Session> SessionPtr;
+
+		void sessionToYaml(SessionPtr session,  EmitterPtr em);
 	}
 }
 

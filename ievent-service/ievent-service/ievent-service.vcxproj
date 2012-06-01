@@ -140,6 +140,8 @@
     <ClInclude Include="scoringimpulse.hpp" />
     <ClInclude Include="scoringimpulsehandler.hpp" />
     <ClInclude Include="sectortracker.hpp" />
+    <ClInclude Include="SessionInfoRequestHandler.h" />
+    <ClInclude Include="Types.hpp" />
     <ClInclude Include="weekendinfo.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -166,6 +168,7 @@
     <ClCompile Include="scoringimpulse.cpp" />
     <ClCompile Include="scoringimpulsehandler.cpp" />
     <ClCompile Include="sectortracker.cpp" />
+    <ClCompile Include="SessionInfoRequestHandler.cpp" />
     <ClCompile Include="weekendinfo.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

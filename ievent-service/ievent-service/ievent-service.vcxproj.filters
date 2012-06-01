@@ -129,6 +129,12 @@
     <ClInclude Include="ResultsEntry.h">
       <Filter>Datatypes\WeekendInfo\SessionInfo</Filter>
     </ClInclude>
+    <ClInclude Include="SessionInfoRequestHandler.h">
+      <Filter>Comms\ReqResp\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -193,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="ResultsEntry.cpp">
       <Filter>Datatypes\WeekendInfo\SessionInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="SessionInfoRequestHandler.cpp">
+      <Filter>Comms\ReqResp\Handlers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

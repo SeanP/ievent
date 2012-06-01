@@ -4,6 +4,8 @@
 #include "boost/shared_ptr.hpp"
 #include "yaml-cpp/yaml.h"
 
+#include "Types.hpp"
+
 using namespace std;
 
 namespace IEvent
@@ -23,7 +25,6 @@ namespace IEvent
 		}; 
 
 		typedef boost::shared_ptr<Driver> DriverPtr;
-		typedef boost::shared_ptr<YAML::Emitter> EmitterPtr;
 
 		void driverToYaml(DriverPtr driver,  EmitterPtr em);
 	}

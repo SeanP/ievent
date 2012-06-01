@@ -183,6 +183,7 @@ void SessionInfoHandler::handleSessionInfo(const YAML::Node& yamlSessionInfo, ch
 						assert(ptr->driver);
 						SessionInfo::sessions[sessionId]->resultsByCarIdx[carIdx] = ptr;
 						changed = true;
+						positionChanged = true;
 					}
 
 
@@ -275,26 +276,12 @@ void SessionInfoHandler::handleSessionInfo(const YAML::Node& yamlSessionInfo, ch
 			(*em) << YAML::BeginMap << YAML::Key << "SessionNum" << YAML::Value << sessionId;
 			(*em) << YAML::Key << "Results" << YAML::Value <<YAML::BeginSeq;
 			BOOST_FOREACH (ResultsEntryPtr ptr, changedEntries) {
-				(*em) << YAML::BeginMap;
-				(*em) << YAML::Key << "CarNumber" << YAML::Value << ptr->driver->carNumber;
-				(*em) << YAML::Key << "FastestLapNumber" << YAML::Value << ptr->fastestLapNumber;
-				(*em) << YAML::Key << "FastestLapTime" << YAML::Value << ptr->fastestLapTime;
-				(*em) << YAML::Key << "Lap" << YAML::Value << ptr->lap;
-				(*em) << YAML::Key << "LapsComplete" << YAML::Value << ptr->lapsComplete;
-				(*em) << YAML::Key << "LapsDriven" << YAML::Value << ptr->lapsDriven;
-				(*em) << YAML::Key << "LapsLed" << YAML::Value << ptr->lapsLed;
-				(*em) << YAML::Key << "LastLapTime" << YAML::Value << ptr->lastLapTime;
-				(*em) << YAML::Key << "Position" << YAML::Value << ptr->position;
-				// TODO (*em) << YAML::Key << "PositionInClass" << YAML::Value << ptr->positionInClass;
-				(*em) << YAML::Key << "ReasonOut" << YAML::Value << ptr->reasonOut;
-				(*em) << YAML::Key << "Time" << YAML::Value << ptr->time;
-				(*em) << YAML::EndMap;
+				resultsEntryToYaml(ptr, em);
 			}
 			(*em) << YAML::EndSeq << YAML::EndMap;
 		}
 	} // for each session
 	(*em) << YAML::EndSeq << YAML::EndMap << YAML::EndMap;
-	std::cerr << em->c_str() << std::endl;
 }
 
 void SessionInfoHandler::handleDriverInfo(const YAML::Node& yamlDriverInfo) {

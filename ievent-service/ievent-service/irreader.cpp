@@ -11,6 +11,7 @@
 #include "SessionInfoHandler.h"
 #include "CameraRequestHandler.h"
 #include "DriverInfoRequestHandler.h"
+#include "SessionInfoRequestHandler.h"
 
 
 IEvent::Service::iRacingReader::iRacingReader ():
@@ -28,6 +29,9 @@ IEvent::Service::iRacingReader::iRacingReader ():
 
 	RequestHandlerPtr drivers ( new DriverInfoRequestHandler() );
 	_resp.registerHandler("GetAllDrivers", drivers);
+
+	RequestHandlerPtr session ( new SessionInfoRequestHandler() );
+	_resp.registerHandler("GetAllSessions", session);
 
 	_resp.start();
 }

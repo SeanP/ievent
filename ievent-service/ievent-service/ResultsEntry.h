@@ -26,6 +26,8 @@ namespace IEvent
 		};
 
 		typedef boost::shared_ptr<ResultsEntry> ResultsEntryPtr;
+
+		void resultsEntryToYaml(ResultsEntryPtr ptr, EmitterPtr em);
 	}
 
 }
