@@ -43,6 +43,7 @@ BOOST_AUTO_TEST_CASE( CONNECT_TO_SIM ) {
 	IEvent::Service::iRacingReader reader;
 
 	reader.setIsRunning(true);
+	reader.setRunOnce(true);
 
 	reader.run();
 }

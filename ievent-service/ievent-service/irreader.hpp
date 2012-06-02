@@ -15,6 +15,7 @@ namespace IEvent {
 			void run();
 
 			void setIsRunning(bool isRunning);
+			void setRunOnce(bool runOnce);
 			bool isRunning();
 		private:
 			
@@ -26,6 +27,7 @@ namespace IEvent {
 			const irsdk_header *pHeader;
 			
 			bool _running;
+			bool _runOnce;
 			bool _connected;
 			char * _g_data;
 			int _g_nData;

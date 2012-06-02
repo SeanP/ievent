@@ -16,6 +16,7 @@
 
 IEvent::Service::iRacingReader::iRacingReader ():
 	_running(false),
+	_runOnce(false),
 	_connected(false),
 	_timeout(60000),
 	_g_data(NULL),
@@ -41,6 +42,10 @@ IEvent::Service::iRacingReader::~iRacingReader () {
 
 void IEvent::Service::iRacingReader::setIsRunning(bool isRunning) {
 	_running = isRunning;
+}
+
+void IEvent::Service::iRacingReader::setRunOnce(bool runOnce) {
+	_runOnce = runOnce;
 }
 
 bool IEvent::Service::iRacingReader::init() {
@@ -74,7 +79,9 @@ bool IEvent::Service::iRacingReader::init() {
 bool IEvent::Service::iRacingReader::shutdown() {
 	_handlers.clear();
 	_connected = false;
-	_running = false; // For testing only!
+	if (_runOnce) {
+		_running = false; // For testing only!
+	}
 
 	_pub = PublisherPtr();
 
@@ -106,18 +113,6 @@ void IEvent::Service::iRacingReader::run() {
 				BOOST_FOREACH(UpdatePtr handler, _handlers) {
 					handler->handleUpdate(pHeader, _g_data);
 				}
-				/*std::cerr<< irsdk_getSessionInfoStr() << std::endl;*/
-				/*
-				if (pHeader->numVars > 0) {
-				for(int i=0; i<pHeader->numVars; i++) {
-				const irsdk_varHeader *rec = irsdk_getVarHeaderEntry(i);
-
-				std::cerr << "Name: " << rec->name << std::endl;
-				}
-				} else {
-				std::cerr<< "No vars in header!" << std::endl;
-				}				
-				*/
 
 			}
 		} else if (_connected && irsdk_isConnected()) {
