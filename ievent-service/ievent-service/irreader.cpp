@@ -18,7 +18,7 @@ IEvent::Service::iRacingReader::iRacingReader ():
 	_running(false),
 	_runOnce(false),
 	_connected(false),
-	_timeout(60000),
+	_timeout(1000),
 	_g_data(NULL),
 	_g_nData(0),
 	_resp(),

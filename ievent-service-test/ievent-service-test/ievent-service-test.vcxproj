@@ -100,7 +100,8 @@
       </Command>
     </CustomBuildStep>
     <PreBuildEvent>
-      <Command>($TargetDir)/($TargetName).exe</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

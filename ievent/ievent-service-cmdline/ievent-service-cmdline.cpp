@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 	IEvent::Service::iRacingReader reader;
 
 	reader.setIsRunning(true);
-	reader.setRunOnce(true);
+	reader.setRunOnce(false);
 
 	reader.run();
 }

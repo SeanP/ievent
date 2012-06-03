@@ -52,9 +52,9 @@ void SessionInfoHandler::handleSessionInfo(const YAML::Node& yamlSessionInfo, ch
 	(*em) << YAML::BeginMap << YAML::Key << "SessionInfoUpdate" << YAML::Value << YAML::BeginMap;
 
 	if (*currentSession != SessionInfo::currentSession) {
-		(*em) << YAML::Key << "CurrentSession" << YAML::Value << *currentSession;
 		SessionInfo::currentSession = *currentSession;
 	}
+	(*em) << YAML::Key << "CurrentSession" << YAML::Value << *currentSession;
 
 	(*em) << YAML::Key << "Sessions" << YAML::Value << YAML::BeginSeq;
 
@@ -282,6 +282,8 @@ void SessionInfoHandler::handleSessionInfo(const YAML::Node& yamlSessionInfo, ch
 		}
 	} // for each session
 	(*em) << YAML::EndSeq << YAML::EndMap << YAML::EndMap;
+
+	_publisher->publish(em->c_str());
 }
 
 void SessionInfoHandler::handleDriverInfo(const YAML::Node& yamlDriverInfo) {
@@ -341,6 +343,9 @@ void SessionInfoHandler::handleDriverInfo(const YAML::Node& yamlDriverInfo) {
 
 	if ((*em).size() > 22 ) { // Magic value
 		_publisher->publish((*em).c_str());
+		std::cerr << "Published driverInfo" << std::endl;
+	} else {
+		std::cerr << "Did not publish driverInfo" << std::endl;
 	}
 }
 

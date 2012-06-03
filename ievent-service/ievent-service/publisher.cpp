@@ -4,6 +4,7 @@
 
 // TODO This needs to be YAMLized.
 bool IEvent::Service::Publisher::publish(std::string subject, std::string message) {
+	std::cerr << "DEPRECATED" << std::endl;
 	int length = subject.length() + message.length() + 3;
 	zmq::message_t zmqMessage(50);
 	char *data = (char*) zmqMessage.data();
@@ -31,6 +32,7 @@ IEvent::Service::Publisher::Publisher(int threads, int port):
 	std::stringstream ss;
 	ss << "tcp://*:" << port;
 	_publisher.bind(ss.str().c_str());
+	Sleep(1000);
 }
 
 IEvent::Service::Publisher::~Publisher() {
