@@ -273,6 +273,16 @@ void SessionInfoHandler::handleSessionInfo(const YAML::Node& yamlSessionInfo, ch
 			}
 		} // for each record in session
 		if (changedEntries.size() > 0) {
+
+			std::pair<int, ResultsEntryPtr> posPair;
+			std::map<int, int> classPositions;
+			BOOST_FOREACH(posPair, SessionInfo::sessions[sessionId]->resultsByPosition) {
+				int posInClass = classPositions[ posPair.second->driver->carClassID ]  + 1;
+				posPair.second->positionInClass = posInClass;
+				classPositions[ posPair.second->driver->carClassID ] = posInClass;
+			}
+
+
 			(*em) << YAML::BeginMap << YAML::Key << "SessionNum" << YAML::Value << sessionId;
 			(*em) << YAML::Key << "Results" << YAML::Value <<YAML::BeginSeq;
 			BOOST_FOREACH (ResultsEntryPtr ptr, changedEntries) {

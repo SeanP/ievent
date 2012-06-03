@@ -13,7 +13,7 @@ void IEvent::Service::resultsEntryToYaml(ResultsEntryPtr ptr, EmitterPtr em) {
 	(*em) << YAML::Key << "LapsLed" << YAML::Value << ptr->lapsLed;
 	(*em) << YAML::Key << "LastLapTime" << YAML::Value << ptr->lastLapTime;
 	(*em) << YAML::Key << "Position" << YAML::Value << ptr->position;
-	// TODO (*em) << YAML::Key << "PositionInClass" << YAML::Value << ptr->positionInClass;
+	(*em) << YAML::Key << "PositionInClass" << YAML::Value << ptr->positionInClass;
 	(*em) << YAML::Key << "ReasonOut" << YAML::Value << ptr->reasonOut;
 	(*em) << YAML::Key << "Time" << YAML::Value << ptr->time;
 	(*em) << YAML::EndMap;
