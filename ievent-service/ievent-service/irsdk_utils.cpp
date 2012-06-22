@@ -1,7 +1,9 @@
 // Copyright (c) 2011 iRacing.com Motorsport Simulations, LLC.
 // All rights reserved.
 
-#include <windows.h>
+#define WINVER 0x0500
+
+#include <Windows.h>
 #include <stdio.h>
 #include <crtdbg.h>
 #include <time.h>
